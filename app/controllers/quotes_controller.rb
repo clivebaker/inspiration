@@ -1,4 +1,6 @@
 class QuotesController < ApplicationController
+
+  http_basic_authenticate_with name: Rails.application.credentials.dig(:auth, :username), password: Rails.application.credentials.dig(:auth, :password)
   before_action :set_quote, only: %i[ show edit update destroy ]
 
   # GET /quotes or /quotes.json

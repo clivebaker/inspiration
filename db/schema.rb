@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_22_143930) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_23_153049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "logs", force: :cascade do |t|
+    t.string "token"
+    t.bigint "quote_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_id"], name: "index_logs_on_quote_id"
+  end
 
   create_table "quotes", force: :cascade do |t|
     t.string "data"
@@ -22,4 +30,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_22_143930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "logs", "quotes"
 end
