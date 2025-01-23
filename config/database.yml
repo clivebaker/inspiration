@@ -80,10 +80,12 @@ test:
 #
 production:
   primary: &primary_production
-    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
     database: inspiration_production
-    username: inspiration
-    password: <%= ENV["INSPIRATION_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: inspiration_production_cache
