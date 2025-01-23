@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
   resources :quotes
   get "home/index"
-  get "quote/:token" => 'home#quote'
-  get ":uuid/quote" => 'home#single_quote', as: :single_quote 
+  get "quote/:user/:token" => 'home#quote'
+  get ":uuid/quote/:log_id" => 'home#single_quote', as: :single_quote 
+
+  get "history/:user" => 'home#history', as: :history 
+
+
+  post "rating/:log_id/:rating" => 'home#rating', as: :rating 
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

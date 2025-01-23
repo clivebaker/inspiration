@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_23_214743) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_23_223827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_23_214743) do
     t.bigint "quote_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user"
+    t.integer "rating", default: 0
     t.index ["quote_id"], name: "index_logs_on_quote_id"
   end
 

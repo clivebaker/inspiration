@@ -6,9 +6,27 @@
                 <div class="montserrat-bold text-light fs-2"><%= @quote.data %></div>
                 <div class="montserrat-thin-italic text-light pt-3 small">- <%= @quote.author %></div>
             </div>
-                   <%= image_tag 'heart.png', width: '40px'%>
+            <%= image_tag 'heart.png', width: '40px'%>
 
-    
+<%= @log_id %>
+    </div>
+ </div>
+ <div class="row mt-4">
+    <div class="col-12 border-top border-light border-1 text-center pt-4">
+      
+      <div class='text-light montserrat-thin'>
+        Did you like it. Give it a rating.
+      </div>
+      <% (1..5).each do |rating| %>
+        <div class="d-inline-block">
+        <%= button_to rating_path(@log_id, rating), class: 'btn btn-link' do  %>
+            <i class="fa-sharp-duotone fa-light fa-star fs-3 <%= @log.rating == rating ? 'text-warning' : 'text-light'%>"></i>
+        <% end %>
+        </div>
+
+
+      <% end %>
+   
     </div>
  </div>
 </div>
